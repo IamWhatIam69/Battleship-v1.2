@@ -100,6 +100,14 @@ text5 = font_small.render("with 15 units of ammunition which cannot be refilled.
 text6 = font_small.render('possible under the specified rounds of fire',True,'black')
 text0 = font_big.render('INFO',True,'black')
 
+text11 = font_small.render('Each ship occupies some specific number of cells according to the type of ship being placed.',True,'black')
+text12 = font_small.render('The types of ships along with their cell size is mentioned below.',True,'black')
+text13 = font_small.render('3 Cells',True,'black')
+text14 = font_small.render('2 Cells',True,'black')
+text15 = font_small.render('5 Cells',True,'black')
+text16 = font_small.render('4 Cells',True,'black')
+
+
 a=font.render('A',True,'black')
 b=font.render('B',True,'black')
 c=font.render('C',True,'black')
@@ -249,6 +257,50 @@ while running:
         screen.blit(text5, (10, 350))
         screen.blit(text6, (10, 400))
 
+        if button_next.draw()[1]:
+            button_next = Button(900, 500, next_hov_img, 1)
+        else:
+            button_next = Button(900, 500, next_img, 1)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: 
+                running = False
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    if button_next.draw()[0]:
+                        info_click += 1
+                        click = 'Nil'
+                        
+    if info_click == 2 and click == 'Nil':
+        screen.blit(text0, (550, 50))
+        screen.blit(text11,(10,200))
+        screen.blit(text12,(10,250))
+        screen.blit(text13,(400,365))
+        screen.blit(text14,(400,440))
+        screen.blit(text15,(400,515))
+        screen.blit(text16,(400,590))
+
+        screen.blit(ship_a, (40, 350))
+        screen.blit(ship_b, (40, 425))
+        screen.blit(ship_c, (40, 500))
+        screen.blit(ship_d, (40,575))
+
+
+        if button_exit.draw()[1]:
+            button_exit = Button(900, 500, exit_hov_img, 1)
+        else:
+            button_exit = Button(900, 500, exit_img, 1)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: 
+                running = False
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    if button_exit.draw()[0]:
+                        info_click = 0
+                        click = 0
 
     if click == 1:
         for event in pygame.event.get():
